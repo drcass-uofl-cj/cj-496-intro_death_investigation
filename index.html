@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>418 Alder Lane</title>
+<meta name="description" content="An interactive death scene investigation for CJ 496: Death Investigation, Week 1.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=IBM+Plex+Mono:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <div id="boot-msg" style="max-width:40rem;margin:3rem auto;padding:0 1rem;font:16px/1.6 system-ui,sans-serif">
+    <h1 style="font-size:1.6rem">418 Alder Lane</h1>
+    <p>Loading the case…</p>
+    <p style="color:#56636f">If this message stays on screen, the game's scripts didn't run. Open <b>index.html</b> in Chrome, Edge, Firefox or Safari (not a file preview window), or use the web link your instructor gave you.</p>
+    <noscript><p><b>This game needs JavaScript turned on in your browser.</b></p></noscript>
+    <p id="boot-err" style="color:#a8261d"></p>
+  </div>
+</div>
+<div id="toasts" aria-live="polite"></div>
+<script>
+  // Show script errors on the page instead of leaving it blank.
+  window.addEventListener("error", function (e) {
+    var el = document.getElementById("boot-err");
+    if (!el) return;
+    var t = e.target;
+    if (t && t !== window && (t.src || t.href)) {
+      el.textContent += " Couldn't load " + (t.src || t.href).split("/").slice(-2).join("/") + ". Check that the css and js folders are next to index.html.";
+    } else {
+      el.textContent += " Error: " + e.message + (e.filename ? " (" + e.filename.split("/").pop() + ", line " + e.lineno + ")" : "");
+    }
+  }, true);
+</script>
+<script src="js/content.js"></script>
+<script src="js/art.js"></script>
+<script src="js/engine.js"></script>
+</body>
+</html>
